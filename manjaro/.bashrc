@@ -51,7 +51,7 @@ alias pegasus="ssh mct30@pegasus2.ccs.miami.edu"
 alias untargz="tar -xvzf"
 alias targz="tar -cvzf"
 alias untar="tar -vzf"
-alias sp2="ssh underasail@192.168.1.73"
+alias sp2="ssh underasail@99.169.153.12"
 
 set -o noclobber
 
