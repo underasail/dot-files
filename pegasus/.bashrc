@@ -33,7 +33,8 @@ colors() {
 
 module switch python/3.6.5 > /dev/null 2>&1
 module switch perl/5.22.1 > /dev/null 2>&1
-module load java/1.8.0_60
+module switch gcc/5.5.0 > /dev/null 2>&1
+module load java/1.8.0_60 R/3.3.1
 
 unset SSH_ASKPASS
 eval $(ssh-agent -s) > /dev/null 2>&1
@@ -41,7 +42,7 @@ ssh-add ~/.ssh/bmds_id_rsa > /dev/null 2>&1
 
 export PS1="┌[\`if [ \$? = 0 ]; then echo \[\e[32m\]\:\)\[\e[0m\]; else echo \[\e[31m\]\:\(\[\e[0m\]; fi\`]\342\224\200[\[\e[01;49;39m\]\u\[\e[00m\]\[\e[01;49;39m\]@\H\[\e[00m\]]\342\224\200[\[\e[1;49;32m\]\W\[\e[0m\]]\342\224\200[\[\e[1;49;39m\]\$(ls | wc -l) files, \$(ls -lah | grep -m 1 total | sed 's/total //')\[\e[0m\]]\n└╼> "
 
-export PATH="$PATH:/nethome/mct30/scripts:/nethome/mct30/scripts/bmds:/nethome/mct30/local/lib/python3:/nethome/mct30/local/parallel/bin:/nethome/mct30/local/bcftools/bin:/nethome/mct30/local/pymol:/nethome/mct30/local/samtools/bin:/nethome/mct30/local/gnuplot/bin:/nethome/mct30/local/miranda/bin:/nethome/mct30/local/rnahybrid/bin:/nethome/mct30/local/gffread/gffread-0.9.12:/nethome/mct30/local/bedtools/bedtools2/bin:/nethome/mct30/local/meme/bin:/nethome/mct30/local/rosetta/rosetta_bin_linux_2017.08.59291_bundle/main/source/bin:/nethome/mct30/local/rstudio/rstudio-0.98.1103/bin"
+export PATH="$PATH:/nethome/mct30/scripts:/nethome/mct30/scripts/bmds:/nethome/mct30/local/lib/python3:/nethome/mct30/local/parallel/bin:/nethome/mct30/local/bcftools/bin:/nethome/mct30/local/pymol:/nethome/mct30/local/samtools/bin:/nethome/mct30/local/gnuplot/bin:/nethome/mct30/local/miranda/bin:/nethome/mct30/local/rnahybrid/bin:/nethome/mct30/local/gffread/gffread-0.9.12:/nethome/mct30/local/bedtools/bedtools2/bin:/nethome/mct30/local/meme/bin:/nethome/mct30/local/rosetta/rosetta_bin_linux_2017.08.59291_bundle/main/source/bin:/nethome/mct30/local/rstudio/rstudio-0.98.1103/bin:/nethome/mct30/local/fiji/Fiji.app"
 
 alias ls='ls --color'
 alias ll="ls -lh"
