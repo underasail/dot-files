@@ -34,7 +34,8 @@ colors() {
 module switch python/3.6.5 > /dev/null 2>&1
 module switch perl/5.22.1 > /dev/null 2>&1
 module switch gcc/5.5.0 > /dev/null 2>&1
-module load java/1.8.0_60 R/3.3.1
+# module switch java/1.8.0_60 > /dev/null 2>&1
+module load R/3.3.1
 
 unset SSH_ASKPASS
 eval $(ssh-agent -s) > /dev/null 2>&1
@@ -42,12 +43,17 @@ ssh-add ~/.ssh/bmds_id_rsa > /dev/null 2>&1
 
 export PS1="┌[\`if [ \$? = 0 ]; then echo \[\e[32m\]\:\)\[\e[0m\]; else echo \[\e[31m\]\:\(\[\e[0m\]; fi\`]\342\224\200[\[\e[01;49;39m\]\u\[\e[00m\]\[\e[01;49;39m\]@\H\[\e[00m\]]\342\224\200[\[\e[1;49;32m\]\W\[\e[0m\]]\342\224\200[\[\e[1;49;39m\]\$(ls | wc -l) files, \$(ls -lah | grep -m 1 total | sed 's/total //')\[\e[0m\]]\n└╼> "
 
-export PATH="$PATH:/nethome/mct30/scripts:/nethome/mct30/scripts/bmds:/nethome/mct30/local/lib/python3:/nethome/mct30/local/parallel/bin:/nethome/mct30/local/bcftools/bin:/nethome/mct30/local/pymol:/nethome/mct30/local/samtools/bin:/nethome/mct30/local/gnuplot/bin:/nethome/mct30/local/miranda/bin:/nethome/mct30/local/rnahybrid/bin:/nethome/mct30/local/gffread/gffread-0.9.12:/nethome/mct30/local/bedtools/bedtools2/bin:/nethome/mct30/local/meme/bin:/nethome/mct30/local/rosetta/rosetta_bin_linux_2017.08.59291_bundle/main/source/bin:/nethome/mct30/local/rstudio/rstudio-0.98.1103/bin:/nethome/mct30/local/fiji/Fiji.app"
+export PATH="$PATH:/nethome/mct30/scripts:/nethome/mct30/scripts/bmds:/nethome/mct30/local/lib/python3:/nethome/mct30/local/parallel/bin:/nethome/mct30/local/bcftools/bin:/nethome/mct30/local/pymol:/nethome/mct30/local/samtools/bin:/nethome/mct30/local/gnuplot/bin:/nethome/mct30/local/miranda/bin:/nethome/mct30/local/rnahybrid/bin:/nethome/mct30/local/gffread/gffread-0.9.12:/nethome/mct30/local/bedtools/bedtools2/bin:/nethome/mct30/local/meme/bin:/nethome/mct30/local/rosetta/rosetta_bin_linux_2017.08.59291_bundle/main/source/bin:/nethome/mct30/local/rstudio/rstudio-0.98.1103/bin:/nethome/mct30/local/fiji/Fiji.app:/nethome/mct30/local/pita:/nethome/mct30/local/miniconda3/bin:/nethome/mct30/local/mirhunt/bin/linux-64:/nethome/mct30/local/ShortStack/ShortStack-3.8.5:/nethome/mct30/local/ViennaRNA/bin:/nethome/mct30/local/hisat2/hisat2-2.1.0:/nethome/mct30/local/sratoolkit/sratoolkit.2.9.2-centos_linux64/bin:/nethome/mct30/local/trim-galore/TrimGalore:/nethome/mct30/.local/bin:/nethome/mct30/local/seqmonk/SeqMonk:/nethome/mct30/local/admixture/admixture_linux-1.3.0:/nethome/mct30/local/htop/bin:/nethome/mct30/local/fasta35/fasta-35.4.12/bin"
 
+
+# export LD_LIBRARY_PATH="/nethome/mct30/local/glibc/lib:$LD_LIBRARY_PATH"
+    # Breaks Java
 alias ls='ls --color'
 alias ll="ls -lh"
 alias cdl='. cdl.sh'
 alias py3='module switch python/3.3.1'
+alias wen='history | grep '
+alias less='less -S'
 
 set -o noclobber
 
@@ -64,6 +70,18 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+export LANGUAGE="C"
+export LC_ALL="C"
+export LANG="C"
+
+# TIME ZONE #
+export TZ="/usr/share/zoneinfo/EST"
+
+# Library Extensions for GSL #
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+# export CFLAGS="-I/usr/local/include"
+# export LDFLAGS="-L/usr/local/lib"
 
 [[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
 
